@@ -47,7 +47,7 @@ resolvers += "casterlabs-maven" at "https://repo.casterlabs.co/maven"
 
 ## Adding to your project
 
-Replace `VERSION` with the latest version or commit in this repo and make sure to add the [Repository](https://github.com/Casterlabs/log-strudel#Repository) to your build system.
+Replace `VERSION_OR_HASH` with the latest release tag or commit in this repo and make sure to add the [Repository](https://github.com/Casterlabs/log-strudel#Repository) to your build system.
 
 <details>
   <summary>Maven</summary>
@@ -56,7 +56,7 @@ Replace `VERSION` with the latest version or commit in this repo and make sure t
     <dependency>
         <groupId>co.casterlabs.log_strudel</groupId>
         <artifactId>java_client</artifactId>
-        <version>VERSION</version>
+        <VERSION_OR_HASH>VERSION_OR_HASH</VERSION_OR_HASH>
     </dependency>
   ```
 </details>
@@ -66,7 +66,7 @@ Replace `VERSION` with the latest version or commit in this repo and make sure t
   
   ```gradle
 	dependencies {
-        implementation 'co.casterlabs.log_strudel:java_client:VERSION'
+        implementation 'co.casterlabs.log_strudel:java_client:VERSION_OR_HASH'
 	}
   ```
 </details>
@@ -75,7 +75,7 @@ Replace `VERSION` with the latest version or commit in this repo and make sure t
   <summary>SBT</summary>
   
   ```
-libraryDependencies += "co.casterlabs.log_strudel" % "java_client" % "VERSION"
+libraryDependencies += "co.casterlabs.log_strudel" % "java_client" % "VERSION_OR_HASH"
   ```
 </details>
 
@@ -83,7 +83,7 @@ libraryDependencies += "co.casterlabs.log_strudel" % "java_client" % "VERSION"
   <summary>Leiningen</summary>
   
   ```
-:dependencies [[co.casterlabs.log_strudel/java_client "VERSION"]]	
+:dependencies [[co.casterlabs.log_strudel/java_client "VERSION_OR_HASH"]]	
   ```
 </details>
 
