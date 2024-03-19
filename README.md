@@ -56,7 +56,7 @@ Replace `VERSION_OR_HASH` with the latest release tag or commit in this repo and
     <dependency>
         <groupId>co.casterlabs.log_strudel</groupId>
         <artifactId>java_client</artifactId>
-        <VERSION_OR_HASH>VERSION_OR_HASH</VERSION_OR_HASH>
+        <version>VERSION_OR_HASH</version>
     </dependency>
   ```
 </details>
