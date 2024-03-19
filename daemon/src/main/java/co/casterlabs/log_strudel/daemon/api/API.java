@@ -53,6 +53,7 @@ public class API {
         DummyPlugin dummy = new DummyPlugin();
 
         sora.register(dummy);
+        sora.addProvider(dummy, new RouteCORS());
         sora.addProvider(dummy, new RouteLines());
         sora.addProvider(dummy, new RoutePing());
 
