@@ -13,7 +13,7 @@ public class Line {
     public LineLevel level = LineLevel.INFO;
     public long timestamp = System.currentTimeMillis();
 
-    public Line setKey(String... parts) {
+    public Line key(String... parts) {
         this.key = String.join(".", parts);
         return this;
     }
