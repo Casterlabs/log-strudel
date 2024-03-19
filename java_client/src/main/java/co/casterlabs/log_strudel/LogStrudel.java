@@ -44,13 +44,9 @@ public class LogStrudel {
             RsonBodyHandler.of(JsonObject.class)
         ).body();
 
-        if (response.get("error").isJsonObject()) {
+        if (response.get("error").getAsArray().size() > 0) {
             throw new LinePublishingException(
-                String.format(
-                    "[%s] %s",
-                    response.getObject("error").getString("code"),
-                    response.getObject("error").getString("message")
-                )
+                response.get("error").getAsArray().toString()
             );
         }
     }
