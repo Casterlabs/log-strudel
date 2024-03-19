@@ -41,7 +41,7 @@ public class RouteLines implements HttpProvider {
                 toAdd.id,
                 toAdd.timestamp,
                 toAdd.key,
-                toAdd.level.ordinal(),
+                toAdd.level,
                 toAdd.line
             );
 

@@ -101,7 +101,7 @@ public class Bootstrap {
             try {
                 // Since this is our first launch, let's go ahead and create the necessary
                 // tables.
-                LogStrudel.query("CREATE TABLE IF NOT EXISTS logstrudel_lines (id PRIMARY KEY NOT NULL, timestamp INTEGER NOT NULL, key TEXT NOT NULL, level INTEGER NOT NULL, line TEXT NOT NULL);");
+                LogStrudel.query("CREATE TABLE IF NOT EXISTS logstrudel_lines (id PRIMARY KEY NOT NULL, timestamp INTEGER NOT NULL, key TEXT NOT NULL, level TEXT NOT NULL, line TEXT NOT NULL);");
             } catch (DatabaseException | IOException | InterruptedException e) {
                 FastLogger.logStatic(LogLevel.FATAL, "Unable to initialize databse:\n%s", e);
                 return;
