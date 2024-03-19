@@ -52,7 +52,7 @@ public class Bootstrap {
 
     private static void reload() throws IOException {
         if (!CONFIG_FILE.exists()) {
-            FastLogger.logStatic("Config file doesn't exist, creating a new file. Modify it and restart DBOHTTP.");
+            FastLogger.logStatic("Config file doesn't exist, creating a new file. Modify it and restart LogStrudel.");
             Files.writeString(
                 CONFIG_FILE.toPath(),
                 Rson.DEFAULT
