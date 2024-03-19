@@ -1,10 +1,10 @@
 const iconCache: { [key: string]: string } = {};
 
 function replaceIcon(element: Element) {
-	// if (element.hasAttribute('data-replaced')) return;
+	if (element.hasAttribute('data-replaced')) return;
 
 	const iconPath = element.getAttribute('data-icon') as string;
-	// element.setAttribute('data-replaced', 'true');
+	element.setAttribute('data-replaced', 'true');
 
 	if (iconCache[iconPath]) {
 		element.innerHTML = iconCache[iconPath];
@@ -36,6 +36,16 @@ function replaceIcon(element: Element) {
 export default function hook() {
 	new MutationObserver((records) => {
 		for (const record of records) {
+			if (record.addedNodes.length > 0) {
+				for (const element of record.addedNodes) {
+					if (element.nodeName.toLowerCase() == 'icon') {
+						replaceIcon(element as Element);
+						break;
+					}
+				}
+			}
+
+			// SvelteKit likes to undo all of our hard work. Let's prevent that.
 			if (record.addedNodes.length > 0) {
 				for (const element of record.addedNodes) {
 					if (element.nodeName.toLowerCase() == 'icon') {
