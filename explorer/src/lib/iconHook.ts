@@ -35,7 +35,7 @@ function replaceIcon(element: Element) {
 	}
 }
 
-export default function hook() {
+export default async function hook() {
 	new MutationObserver(async (records) => {
 		await tick();
 		for (const record of records) {
@@ -54,5 +54,6 @@ export default function hook() {
 		childList: true
 	});
 
+	await tick();
 	document.querySelectorAll('icon').forEach(replaceIcon);
 }
