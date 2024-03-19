@@ -99,6 +99,20 @@
 					</div>
 				</li>
 			{/each}
+			<li class="flex">
+				<div class="flex items-center">
+					<button
+						on:click={() => {
+							rebuildTree();
+							currentPath = currentPath;
+						}}
+						class="text-base-12 hover:text-base-11"
+					>
+						<icon data-icon="arrow-path" />
+						<span class="sr-only">Refresh</span>
+					</button>
+				</div>
+			</li>
 		</ol>
 	</nav>
 </div>
