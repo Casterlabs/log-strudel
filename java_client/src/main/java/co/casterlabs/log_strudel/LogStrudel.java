@@ -21,6 +21,12 @@ public class LogStrudel {
     private String lsUrl;
     private String lsToken;
 
+    public void tryPublish(@NonNull Line line) {
+        try {
+            this.publish(line);
+        } catch (IOException | InterruptedException | LinePublishingException ignored) {}
+    }
+
     public void publish(@NonNull Line line) throws IOException, InterruptedException, LinePublishingException {
         JsonObject response = httpClient.send(
             HttpRequest.newBuilder()
