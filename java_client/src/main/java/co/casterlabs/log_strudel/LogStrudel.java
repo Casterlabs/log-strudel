@@ -5,9 +5,9 @@ import java.net.URI;
 import java.net.http.HttpClient;
 import java.net.http.HttpClient.Redirect;
 import java.net.http.HttpRequest;
+import java.net.http.HttpResponse.BodyHandlers;
 
 import co.casterlabs.rakurai.json.Rson;
-import co.casterlabs.rakurai.json.element.JsonObject;
 import lombok.AllArgsConstructor;
 import lombok.NonNull;
 
@@ -21,16 +21,8 @@ public class LogStrudel {
     private String lsUrl;
     private String lsToken;
 
-    public void tryPublish(@NonNull Line line) {
-        try {
-            this.publish(line);
-        } catch (Throwable t) {
-            t.printStackTrace();
-        }
-    }
-
-    public void publish(@NonNull Line line) throws IOException, InterruptedException, LinePublishingException {
-        JsonObject response = httpClient.send(
+    public void publish(@NonNull Line line) throws IOException, InterruptedException {
+        httpClient.send(
             HttpRequest.newBuilder()
                 .uri(URI.create(this.lsUrl + "/lines"))
                 .header("Authorization", "Bearer " + this.lsToken)
@@ -41,23 +33,8 @@ public class LogStrudel {
                     )
                 )
                 .build(),
-            RsonBodyHandler.of(JsonObject.class)
-        ).body();
-
-        if (response.get("error").getAsArray().size() > 0) {
-            throw new LinePublishingException(
-                response.get("error").getAsArray().toString()
-            );
-        }
-    }
-
-    public static class LinePublishingException extends Exception {
-        private static final long serialVersionUID = 6248204611557908581L;
-
-        public LinePublishingException(String message) {
-            super(message);
-        }
-
+            BodyHandlers.discarding()
+        );
     }
 
 }
