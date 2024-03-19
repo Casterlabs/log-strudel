@@ -50,9 +50,7 @@
 					.finally(() => (executingQuery = false))) || [];
 		})();
 
-	onMount(() => {
-		checkSettings();
-
+	function rebuildTree() {
 		executingQuery = true;
 		fetch(`${$connectionUrl}/key-tree`, {
 			method: 'GET',
@@ -67,6 +65,11 @@
 			})
 			.catch(alert)
 			.finally(() => (executingQuery = false));
+	}
+
+	onMount(() => {
+		checkSettings();
+		rebuildTree();
 	});
 </script>
 
