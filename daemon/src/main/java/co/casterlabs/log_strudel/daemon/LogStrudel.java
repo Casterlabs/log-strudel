@@ -1,4 +1,4 @@
-package co.casterlabs.dbohttp;
+package co.casterlabs.log_strudel.daemon;
 
 import java.io.IOException;
 import java.net.URI;
@@ -8,9 +8,9 @@ import org.jetbrains.annotations.Nullable;
 
 import com.auth0.jwt.interfaces.JWTVerifier;
 
-import co.casterlabs.dbohttp.config.Config;
-import co.casterlabs.dbohttp.util.Misc;
-import co.casterlabs.dbohttp.util.RsonBodyHandler;
+import co.casterlabs.log_strudel.daemon.config.Config;
+import co.casterlabs.log_strudel.daemon.util.Misc;
+import co.casterlabs.log_strudel.daemon.util.RsonBodyHandler;
 import co.casterlabs.rakurai.json.Rson;
 import co.casterlabs.rakurai.json.element.JsonArray;
 import co.casterlabs.rakurai.json.element.JsonObject;

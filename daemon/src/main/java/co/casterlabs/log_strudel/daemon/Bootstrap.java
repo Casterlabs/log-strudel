@@ -1,4 +1,4 @@
-package co.casterlabs.dbohttp;
+package co.casterlabs.log_strudel.daemon;
 
 import java.io.File;
 import java.io.IOException;
@@ -7,10 +7,10 @@ import java.nio.file.Files;
 import com.auth0.jwt.JWT;
 import com.auth0.jwt.algorithms.Algorithm;
 
-import co.casterlabs.dbohttp.LogStrudel.DatabaseException;
-import co.casterlabs.dbohttp.api.API;
-import co.casterlabs.dbohttp.config.Config;
-import co.casterlabs.dbohttp.util.FileWatcher;
+import co.casterlabs.log_strudel.daemon.LogStrudel.DatabaseException;
+import co.casterlabs.log_strudel.daemon.api.API;
+import co.casterlabs.log_strudel.daemon.config.Config;
+import co.casterlabs.log_strudel.daemon.util.FileWatcher;
 import co.casterlabs.rakurai.json.Rson;
 import co.casterlabs.rakurai.json.serialization.JsonParseException;
 import xyz.e3ndr.fastloggingframework.FastLoggingFramework;

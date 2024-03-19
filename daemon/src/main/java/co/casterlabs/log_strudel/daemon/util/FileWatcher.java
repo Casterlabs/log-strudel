@@ -1,4 +1,4 @@
-package co.casterlabs.dbohttp.util;
+package co.casterlabs.log_strudel.daemon.util;
 
 import java.io.File;
 import java.nio.file.FileSystems;

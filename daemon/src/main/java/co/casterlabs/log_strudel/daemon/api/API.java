@@ -1,4 +1,4 @@
-package co.casterlabs.dbohttp.api;
+package co.casterlabs.log_strudel.daemon.api;
 
 import java.io.IOException;
 import java.util.Arrays;
@@ -9,7 +9,7 @@ import org.jetbrains.annotations.Nullable;
 
 import com.auth0.jwt.exceptions.JWTVerificationException;
 
-import co.casterlabs.dbohttp.LogStrudel;
+import co.casterlabs.log_strudel.daemon.LogStrudel;
 import co.casterlabs.rakurai.io.http.HttpMethod;
 import co.casterlabs.rakurai.io.http.HttpStatus;
 import co.casterlabs.rakurai.io.http.server.HttpResponse;

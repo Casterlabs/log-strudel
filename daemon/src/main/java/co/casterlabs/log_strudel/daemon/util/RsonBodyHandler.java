@@ -1,4 +1,4 @@
-package co.casterlabs.dbohttp.util;
+package co.casterlabs.log_strudel.daemon.util;
 
 import java.net.http.HttpResponse.BodyHandler;
 import java.net.http.HttpResponse.BodySubscriber;

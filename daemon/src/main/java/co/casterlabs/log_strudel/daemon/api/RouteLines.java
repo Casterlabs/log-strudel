@@ -1,10 +1,10 @@
-package co.casterlabs.dbohttp.api;
+package co.casterlabs.log_strudel.daemon.api;
 
 import java.util.HashMap;
 import java.util.Map;
 import java.util.UUID;
 
-import co.casterlabs.dbohttp.LogStrudel;
+import co.casterlabs.log_strudel.daemon.LogStrudel;
 import co.casterlabs.rakurai.io.http.HttpMethod;
 import co.casterlabs.rakurai.io.http.StandardHttpStatus;
 import co.casterlabs.rakurai.io.http.server.HttpResponse;

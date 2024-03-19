@@ -1,4 +1,4 @@
-package co.casterlabs.dbohttp.util;
+package co.casterlabs.log_strudel.daemon.util;
 
 import java.net.http.HttpClient;
 import java.net.http.HttpClient.Redirect;

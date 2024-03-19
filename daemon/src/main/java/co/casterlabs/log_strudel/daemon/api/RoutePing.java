@@ -1,4 +1,4 @@
-package co.casterlabs.dbohttp.api;
+package co.casterlabs.log_strudel.daemon.api;
 
 import co.casterlabs.rakurai.io.http.StandardHttpStatus;
 import co.casterlabs.rakurai.io.http.server.HttpResponse;

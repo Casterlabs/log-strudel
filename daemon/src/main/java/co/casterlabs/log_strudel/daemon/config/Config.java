@@ -1,4 +1,4 @@
-package co.casterlabs.dbohttp.config;
+package co.casterlabs.log_strudel.daemon.config;
 
 import org.jetbrains.annotations.Nullable;
 

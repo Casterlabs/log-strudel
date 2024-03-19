@@ -1,4 +1,4 @@
-package co.casterlabs.dbohttp.api;
+package co.casterlabs.log_strudel.daemon.api;
 
 import co.casterlabs.rakurai.json.annotating.JsonClass;
 import xyz.e3ndr.fastloggingframework.logging.LogLevel;

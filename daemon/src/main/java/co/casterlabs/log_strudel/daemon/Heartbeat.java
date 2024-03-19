@@ -1,4 +1,4 @@
-package co.casterlabs.dbohttp;
+package co.casterlabs.log_strudel.daemon;
 
 import java.io.Closeable;
 import java.io.IOException;
@@ -7,7 +7,7 @@ import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
 import java.util.concurrent.TimeUnit;
 
-import co.casterlabs.dbohttp.util.Misc;
+import co.casterlabs.log_strudel.daemon.util.Misc;
 import xyz.e3ndr.fastloggingframework.logging.FastLogger;
 import xyz.e3ndr.fastloggingframework.logging.LogLevel;
 
