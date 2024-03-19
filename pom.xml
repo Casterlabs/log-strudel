@@ -7,6 +7,7 @@
 
 	<modules>
 		<module>daemon</module>
+		<module>java_client</module>
 	</modules>
 
 	<properties>
