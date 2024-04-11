@@ -3,11 +3,12 @@ package co.casterlabs.log_strudel.daemon;
 import java.io.File;
 import java.io.IOException;
 import java.nio.file.Files;
+import java.sql.DriverManager;
+import java.sql.SQLException;
 
 import com.auth0.jwt.JWT;
 import com.auth0.jwt.algorithms.Algorithm;
 
-import co.casterlabs.log_strudel.daemon.LogStrudel.DatabaseException;
 import co.casterlabs.log_strudel.daemon.api.API;
 import co.casterlabs.log_strudel.daemon.config.Config;
 import co.casterlabs.log_strudel.daemon.util.FileWatcher;
@@ -99,10 +100,14 @@ public class Bootstrap {
             }
         } else {
             try {
+                LogStrudel.db = DriverManager.getConnection("jdbc:sqlite:database.sqlite");
+
                 // Since this is our first launch, let's go ahead and create the necessary
                 // tables.
-                LogStrudel.query("CREATE TABLE IF NOT EXISTS logstrudel_lines (id PRIMARY KEY NOT NULL, timestamp INTEGER NOT NULL, key TEXT NOT NULL, level TEXT NOT NULL, line TEXT NOT NULL);");
-            } catch (DatabaseException | IOException | InterruptedException e) {
+                LogStrudel.db
+                    .prepareStatement("CREATE TABLE IF NOT EXISTS logstrudel_lines (id PRIMARY KEY NOT NULL, timestamp INTEGER NOT NULL, key TEXT NOT NULL, level TEXT NOT NULL, line TEXT NOT NULL);")
+                    .execute();
+            } catch (SQLException e) {
                 FastLogger.logStatic(LogLevel.FATAL, "Unable to initialize databse:\n%s", e);
                 return;
             }

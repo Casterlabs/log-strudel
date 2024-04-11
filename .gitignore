@@ -13,3 +13,4 @@
 
 # Misc
 daemon/config.json
+daemon/database.sqlite

@@ -11,8 +11,6 @@ public class Config {
     public boolean debug = false;
     public int port = 10244;
 
-    public DatabaseConfig database = new DatabaseConfig();
-
     public @Nullable String heartbeatUrl = null;
     public long heartbeatIntervalSeconds = 15;
 

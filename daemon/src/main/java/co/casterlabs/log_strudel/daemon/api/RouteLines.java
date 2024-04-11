@@ -1,16 +1,16 @@
 package co.casterlabs.log_strudel.daemon.api;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 import java.util.UUID;
 
 import co.casterlabs.log_strudel.daemon.LogStrudel;
+import co.casterlabs.log_strudel.daemon.LogStrudel.DatabaseRow;
 import co.casterlabs.rakurai.io.http.HttpMethod;
 import co.casterlabs.rakurai.io.http.StandardHttpStatus;
 import co.casterlabs.rakurai.io.http.server.HttpResponse;
 import co.casterlabs.rakurai.json.Rson;
-import co.casterlabs.rakurai.json.element.JsonArray;
-import co.casterlabs.rakurai.json.element.JsonElement;
 import co.casterlabs.rakurai.json.element.JsonObject;
 import co.casterlabs.sora.api.http.HttpProvider;
 import co.casterlabs.sora.api.http.SoraHttpSession;
@@ -62,13 +62,13 @@ public class RouteLines implements HttpProvider {
                 return API.error(session, StandardHttpStatus.UNAUTHORIZED, "UNAUTHORIZED");
             }
 
-            JsonArray keysEntries = LogStrudel.query(
+            List<DatabaseRow> keysEntries = LogStrudel.query(
                 "SELECT DISTINCT key FROM logstrudel_lines WHERE true;"
             );
 
             Map<String, Object> tree = new HashMap<>();
-            for (JsonElement e : keysEntries) {
-                String key = e.getAsObject().getString("key");
+            for (Map<String, Object> e : keysEntries) {
+                String key = (String) e.get("key");
                 Map<String, Object> root = tree;
 
                 // Traverse, creating sub trees as we go.
@@ -102,12 +102,12 @@ public class RouteLines implements HttpProvider {
 
             String id = session.getUriParameters().get("id");
 
-            JsonElement result = LogStrudel.query(
+            Map<String, Object> result = LogStrudel.query(
                 "SELECT * FROM logstrudel_lines WHERE id = ?1;",
                 id
             ).get(0); // Only one result.
 
-            return API.success(session, StandardHttpStatus.OK, JsonObject.singleton("lines", result));
+            return API.success(session, StandardHttpStatus.OK, JsonObject.singleton("line", result));
         } catch (IndexOutOfBoundsException e) {
             return API.error(session, StandardHttpStatus.NOT_FOUND, "NOT_FOUND");
         } catch (Exception e) {
@@ -130,7 +130,7 @@ public class RouteLines implements HttpProvider {
             final long before = Long.parseLong(session.getQueryParameters().getOrDefault("before", String.valueOf(Long.MAX_VALUE)));
             String key = session.getUriParameters().get("key");
 
-            JsonArray lineEntries = LogStrudel.query(
+            List<DatabaseRow> lineEntries = LogStrudel.query(
                 String.format("SELECT * FROM logstrudel_lines WHERE key = ?1 AND timestamp > ?2 AND TIMESTAMP < ?3 ORDER BY timestamp %s;", sort),
                 key,
                 after,

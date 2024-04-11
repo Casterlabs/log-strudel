@@ -3,15 +3,21 @@ package co.casterlabs.log_strudel.daemon;
 import java.io.Closeable;
 import java.io.IOException;
 import java.net.URI;
+import java.net.http.HttpClient;
+import java.net.http.HttpClient.Redirect;
 import java.net.http.HttpRequest;
 import java.net.http.HttpResponse;
 import java.util.concurrent.TimeUnit;
 
-import co.casterlabs.log_strudel.daemon.util.Misc;
 import xyz.e3ndr.fastloggingframework.logging.FastLogger;
 import xyz.e3ndr.fastloggingframework.logging.LogLevel;
 
 public class Heartbeat extends Thread implements Closeable {
+    private static final HttpClient httpClient = HttpClient
+        .newBuilder()
+        .followRedirects(Redirect.ALWAYS)
+        .build();
+
     private boolean shouldRun = true;
 
     protected Heartbeat() {
@@ -24,7 +30,7 @@ public class Heartbeat extends Thread implements Closeable {
     public void run() {
         while (this.shouldRun) {
             try {
-                String response = Misc.httpClient.send(
+                String response = httpClient.send(
                     HttpRequest.newBuilder()
                         .uri(URI.create(LogStrudel.config.heartbeatUrl))
                         .header("Content-Type", "text/plain")
