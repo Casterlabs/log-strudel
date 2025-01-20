@@ -1,6 +1,7 @@
 package co.casterlabs.log_strudel;
 
 import java.net.URI;
+import java.net.URISyntaxException;
 import java.net.http.HttpClient;
 import java.net.http.HttpClient.Redirect;
 import java.net.http.HttpRequest;
@@ -22,9 +23,11 @@ public class LogStrudel {
 
     public void publish(@NonNull Line line) {
         try {
+            URI uri = new URI(this.lsUrl + "/lines");
+
             httpClient.sendAsync(
                 HttpRequest.newBuilder()
-                    .uri(URI.create(this.lsUrl + "/lines"))
+                    .uri(uri)
                     .header("Authorization", "Bearer " + this.lsToken)
                     .header("Content-Type", "application/json")
                     .POST(
@@ -35,6 +38,8 @@ public class LogStrudel {
                     .build(),
                 BodyHandlers.discarding()
             );
+        } catch (URISyntaxException ignored) {
+            // NOOP
         } catch (Throwable t) {
             t.printStackTrace();
         }
