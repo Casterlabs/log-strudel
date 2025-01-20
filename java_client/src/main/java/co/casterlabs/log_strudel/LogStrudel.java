@@ -38,7 +38,7 @@ public class LogStrudel {
                     .build(),
                 BodyHandlers.discarding()
             );
-        } catch (URISyntaxException ignored) {
+        } catch (URISyntaxException | IllegalArgumentException ignored) {
             // NOOP
         } catch (Throwable t) {
             t.printStackTrace();
