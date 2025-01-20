@@ -8,10 +8,14 @@ import lombok.experimental.Accessors;
 @Accessors(chain = true, fluent = true)
 @JsonClass(exposeAll = true)
 public class Line {
-    public String key = "";
-    public String line = "";
-    public LineLevel level = LineLevel.INFO;
-    public long timestamp = System.currentTimeMillis();
+    private String key = "";
+    private String line = "";
+    private LineLevel level = LineLevel.INFO;
+    private long timestamp = System.currentTimeMillis();
+
+    public String key() {
+        return this.key;
+    }
 
     public Line key(String... parts) {
         this.key = String.join(".", parts);
